@@ -7,6 +7,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from db_connection import get_connection
 
+
 # FETCH DATA
 def get_workout_data(username, conn):
     try:
@@ -16,10 +17,10 @@ def get_workout_data(username, conn):
     except:
         return []
 
-def get_points_data(username, conn):
+def get_durations_data(username, conn):
     try:
         cur = conn.cursor()
-        cur.execute("SELECT log_date, points_earned FROM points_log WHERE username = %s", (username,))
+        cur.execute("SELECT workout_date, duration FROM workouts WHERE username = %s", (username,))
         return cur.fetchall()
     except:
         return []
@@ -63,7 +64,7 @@ def show_progress(username):
         return
 
     workouts = get_workout_data(username, conn)
-    points = get_points_data(username, conn)
+    duration = get_durations_data(username, conn)
 
     # LEFT FRAME - WORKOUT TABLE
     left_frame = tk.Frame(canvas, bg="white")
@@ -84,18 +85,18 @@ def show_progress(username):
         tree.insert("", "end", values=row)
     tree.pack(fill="both", expand=True)
 
-    # RIGHT FRAME - POINTS GRAPH
-    right_frame = tk.Frame(canvas, bg="white")
-    right_window = canvas.create_window(500, 10, anchor="nw", window=right_frame)
+    # RIGHT FRAME 
+    right_frame = tk.Frame(canvas, bg="black")
+    right_window = canvas.create_window(500, 60, anchor="nw", window=right_frame)
 
     fig = Figure(figsize=(5, 3), dpi=100)
     ax = fig.add_subplot(111)
-    if points:
-        dates = [row[0] for row in points]
-        pts = [row[1] for row in points]
-        ax.plot(dates, pts, marker='o', color='green')
-        ax.set_title("Points Earned per Day")
-        ax.set_ylabel("Points")
+    if duration:
+        dates = [row[0] for row in duration]
+        dur = [row[1] for row in duration]
+        ax.plot(dates, dur, marker='o', color='black')
+        ax.set_title("progress over time")
+        ax.set_ylabel("duration (min)")
     else:
         ax.text(0.5, 0.5, "No Data", ha="center", va="center")
 
@@ -105,10 +106,10 @@ def show_progress(username):
 
     root.mainloop()
 
-# MAIN
+'''# MAIN
 if __name__ == "__main__":
     username = "test"
     show_progress(username)
-
+'''
 
 

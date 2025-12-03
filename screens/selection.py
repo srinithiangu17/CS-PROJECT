@@ -11,9 +11,7 @@ class Shared:
     clicked3 = None
 
 def open_selection():
-    from screens.option import open_option
-    from screens.workout import open_work
-
+    from workout import open_work
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
 

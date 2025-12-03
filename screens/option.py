@@ -3,8 +3,8 @@ from PIL import Image
 from screens.selection import open_selection
 import os
 from tkinter import Canvas
-
-def open_option():
+from screens.log import show_progress
+def open_option(username):
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
 
@@ -41,7 +41,7 @@ def open_option():
     canvas.bind("<Configure>", update_gradient)
 
 
-    frame = ctk.CTkFrame(win, fg_color="#1f2a38", corner_radius=20, width=400, height=110)
+    frame = ctk.CTkFrame(win, fg_color="#1f2a38", corner_radius=20, width=400, height=200)
     frame.place(relx=0.5, rely=0.5, anchor="center")
 
     create_a_plan = ctk.CTkButton(
@@ -58,3 +58,16 @@ def open_option():
     )
 
     create_a_plan.place(x=10, y=10)
+    view_progress = ctk.CTkButton(
+        frame,
+        text="VIEW PROGRESS",
+        font=("Arial", 20, "bold"),
+        fg_color="#4a90e2",
+        hover_color="#357ABD",
+        text_color="white",
+        width=380,
+        height=80,
+        corner_radius=20,
+        command=lambda: [win.destroy(), show_progress(username)]  # replace "test" with real username later
+    )
+    view_progress.place(x=10, y=110)

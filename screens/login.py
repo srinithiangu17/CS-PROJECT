@@ -82,7 +82,7 @@ def open_login():
                 txt_pass.delete(0, 'end')
             else:
                 win.destroy()
-                open_option()
+                open_option(username)
                 
         else:
             messagebox.showerror("Connection Error", "Database connection failed.")
