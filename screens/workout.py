@@ -9,7 +9,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import letter
 def open_work():
-    from selection import Shared
+    from screens.selection import Shared
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
 
