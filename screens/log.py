@@ -6,13 +6,13 @@ import mysql.connector
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from db_connection import get_connection
-
-
+from screens.shared_data import SharedData
+import matplotlib.dates as mdates
 # FETCH DATA
 def get_workout_data(username, conn):
     try:
         cur = conn.cursor()
-        cur.execute("SELECT workout_date, duration, intensity FROM workouts WHERE username = %s", (username,))
+        cur.execute("SELECT workout_date, duration,intensity FROM workouts WHERE username = %s", (username,))
         return cur.fetchall()
     except:
         return []
@@ -64,14 +64,20 @@ def show_progress(username):
         return
 
     workouts = get_workout_data(username, conn)
+    print("DEBUG workouts =", workouts)
+
     duration = get_durations_data(username, conn)
 
     # LEFT FRAME - WORKOUT TABLE
-    left_frame = tk.Frame(canvas, bg="white")
+    left_frame = tk.Frame(canvas, bg="black")
     left_window = canvas.create_window(10, 10, anchor="nw", window=left_frame)
 
-    label = tk.Label(left_frame, text="Daily Workouts", font=("Arial", 18, "bold"), bg="white")
+    label = tk.Label(left_frame, text="Daily Workouts", font=("Arial", 18, "bold"), bg="black", fg="white")
     label.pack(pady=10)
+    
+
+
+
 
     tree = ttk.Treeview(left_frame, columns=("Date", "Duration", "Intensity"), show="headings")
     tree.heading("Date", text="Date")
@@ -83,20 +89,31 @@ def show_progress(username):
 
     for row in workouts:
         tree.insert("", "end", values=row)
-    tree.pack(fill="both", expand=True)
+    tree.pack(fill="both", expand=True,)
 
     # RIGHT FRAME 
     right_frame = tk.Frame(canvas, bg="black")
-    right_window = canvas.create_window(500, 60, anchor="nw", window=right_frame)
+    right_window = canvas.create_window(500, 70, anchor="nw", window=right_frame)
 
-    fig = Figure(figsize=(5, 3), dpi=100)
-    ax = fig.add_subplot(111)
+    fig = Figure(figsize=(5, 5), dpi=100,facecolor='black' )
+    ax = fig.add_subplot(111, facecolor='black')
     if duration:
         dates = [row[0] for row in duration]
         dur = [row[1] for row in duration]
-        ax.plot(dates, dur, marker='o', color='black')
-        ax.set_title("progress over time")
-        ax.set_ylabel("duration (min)")
+        ax.plot(dates, dur, marker='o', color='white')
+        
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m'))  # day-month
+        for label in ax.get_xticklabels():
+            label.set_rotation(45)
+            label.set_ha('right')
+        ax.set_title("progress over time", color='white', fontsize=20)
+        ax.set_ylabel("duration (min)", color='white')
+        ax.set_xlabel("date", color='white')
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
+        ax.grid(True,color="white",linestyle="--",alpha=0.3)
+
+
     else:
         ax.text(0.5, 0.5, "No Data", ha="center", va="center")
 

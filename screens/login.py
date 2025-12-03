@@ -81,6 +81,9 @@ def open_login():
                 messagebox.showerror("Error", "Invalid username or password!")
                 txt_pass.delete(0, 'end')
             else:
+                from screens.shared_data import SharedData
+                SharedData.username = username
+ 
                 win.destroy()
                 open_option(username)
                 

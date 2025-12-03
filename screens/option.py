@@ -54,7 +54,7 @@ def open_option(username):
         width=380,
         height=80,
         corner_radius=20,
-        command=lambda: [win.destroy(), open_selection()]
+        command=lambda: [win.destroy(), open_selection(username)]
     )
 
     create_a_plan.place(x=10, y=10)

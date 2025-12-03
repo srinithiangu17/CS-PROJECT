@@ -146,9 +146,9 @@ def open_work():
     all_cardio = []
     all_yoga = []
     
-    duration = Shared.clicked1.get()
-    intensity = Shared.clicked2.get()
-    eqp = Shared.clicked3.get()
+    duration = Shared.clicked1
+    intensity = Shared.clicked2
+    eqp = Shared.clicked3
 
     def workout_selection():
         def finish_workout():
