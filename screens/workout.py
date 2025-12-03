@@ -8,8 +8,9 @@ from tkinter import Canvas
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import letter
+
 def open_work():
-    from selection import Shared
+    from screens.selection import Shared
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
 
@@ -146,9 +147,9 @@ def open_work():
     all_cardio = []
     all_yoga = []
     
-    duration = Shared.clicked1.get()
-    intensity = Shared.clicked2.get()
-    eqp = Shared.clicked3.get()
+    duration = Shared.clicked1
+    intensity = Shared.clicked2
+    eqp = Shared.clicked3
 
     def workout_selection():
         def finish_workout():
@@ -248,7 +249,7 @@ def open_work():
             messagebox.showinfo("Saved", f"Workout summary saved:\n{file_path}")
             win.destroy()
         
-        if duration == "30" and intensity == "easy" and eqp == 'no': 
+        if duration == "30" and intensity == "EASY" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -349,7 +350,7 @@ def open_work():
         hover_color="#357ABD",text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "30" and intensity == "easy" and eqp == 'yes': 
+        if duration == "30" and intensity == "EASY" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -457,7 +458,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame,fg_color="#4a90e2",hover_color="#357ABD", text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "30" and intensity == "modrate" and eqp == 'no': 
+        if duration == "30" and intensity == "MODERATE" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -554,7 +555,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, fg_color="#4a90e2",hover_color="#357ABD",text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "30" and intensity == "modrate" and eqp == 'yes': 
+        if duration == "30" and intensity == "MODERATE" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -661,7 +662,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH",fg_color="#4a90e2",hover_color="#357ABD", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "30" and intensity == "hard" and eqp == 'no': 
+        if duration == "30" and intensity == "HARD" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -759,7 +760,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, fg_color="#4a90e2",hover_color="#357ABD",text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "30" and intensity == "hard" and eqp == 'yes': 
+        if duration == "30" and intensity == "HARD" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -867,7 +868,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH", fg_color="#4a90e2",hover_color="#357ABD",font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()       
-        if duration == "45" and intensity == "easy" and eqp == 'no': 
+        if duration == "45" and intensity == "EASY" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -964,7 +965,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame,fg_color="#4a90e2",hover_color="#357ABD", text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "45" and intensity == "easy" and eqp == 'yes': 
+        if duration == "45" and intensity == "EASY" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1076,7 +1077,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, fg_color="#4a90e2",hover_color="#357ABD",text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "45" and intensity == "modrate" and eqp == 'no': 
+        if duration == "45" and intensity == "MODERATE" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1174,7 +1175,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH",fg_color="#4a90e2",hover_color="#357ABD", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()        
-        if duration == "45" and intensity == "modrate" and eqp == 'yes': 
+        if duration == "45" and intensity == "MODERATE" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1282,7 +1283,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH",fg_color="#4a90e2",hover_color="#357ABD", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "45" and intensity == "hard" and eqp == 'no': 
+        if duration == "45" and intensity == "HARD" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1380,7 +1381,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame,fg_color="#4a90e2",hover_color="#357ABD", text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()        
-        if duration == "45" and intensity == "hard" and eqp == 'yes': 
+        if duration == "45" and intensity == "HARD" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1488,7 +1489,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH", fg_color="#4a90e2",hover_color="#357ABD",font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "60" and intensity == "easy" and eqp == 'no': 
+        if duration == "60" and intensity == "EASY" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1585,7 +1586,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH", fg_color="#4a90e2",hover_color="#357ABD",font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "60" and intensity == "easy" and eqp == 'yes': 
+        if duration == "60" and intensity == "EASY" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1692,7 +1693,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH", fg_color="#4a90e2",hover_color="#357ABD",font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()    
-        if duration == "60" and intensity == "modrate" and eqp == 'no': 
+        if duration == "60" and intensity == "MODERATE" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1789,7 +1790,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame,fg_color="#4a90e2",hover_color="#357ABD", text="FINISH", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "60" and intensity == "modrate" and eqp == 'yes': 
+        if duration == "60" and intensity == "MODERATE" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1894,7 +1895,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH", fg_color="#4a90e2",hover_color="#357ABD",font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()        
-        if duration == "60" and intensity == "hard" and eqp == 'no': 
+        if duration == "60" and intensity == "HARD" and eqp == "NO": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
@@ -1991,7 +1992,7 @@ def open_work():
                     finish_button = ctk.CTkButton(result_frame, text="FINISH",fg_color="#4a90e2",hover_color="#357ABD", font=("Arial Bold", 20),width=150, height=45, text_color="white",command=lambda: [finish_and_save_pdf(all_warmup, all_cardio, all_yoga)])
                     finish_button.pack(padx=100,pady=9)
             work()
-        if duration == "60" and intensity == "hard" and eqp == 'yes': 
+        if duration == "60" and intensity == "HARD" and eqp == "YES": 
             mode = ["warmup"]
             all_warmup=[]
             all_cardio=[]
