@@ -1,9 +1,9 @@
 import customtkinter as ctk
 from PIL import Image
-from screens.selection import open_selection
+
 import os
 from tkinter import Canvas
-from screens.log import show_progress
+
 def open_option(username):
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
@@ -14,7 +14,8 @@ def open_option(username):
     win.resizable(False, False)
     canvas = Canvas(win, width=500, height=300, highlightthickness=0)
     canvas.pack(fill="both", expand=True)
-
+    from screens.log import show_progress
+    from screens.selection import open_selection
     def draw_gradient(canvas, color1, color2):
         width = canvas.winfo_width()
         height = canvas.winfo_height()
@@ -54,7 +55,7 @@ def open_option(username):
         width=380,
         height=80,
         corner_radius=20,
-        command=lambda: [win.destroy(), open_selection()]
+        command=lambda: [win.destroy(), open_selection(username)]
     )
 
     create_a_plan.place(x=10, y=10)

@@ -3,7 +3,7 @@ from tkinter import messagebox
 from tkinter.ttk import Label
 import os
 from PIL import Image, ImageTk
-from tkinter import Canvas 
+from tkinter import Canvas
 from screens.shared_data import SharedData
 from db_connection import insert_workout
 
@@ -14,7 +14,7 @@ class Shared:
     clicked3 = None
 
 def open_selection(username):
-    SharedData.username = username
+    SharedData.username = username    
     from screens.option import open_option
     from screens.workout import open_work
 
@@ -86,17 +86,11 @@ def open_selection(username):
         equipment_label = ctk.CTkLabel(frame1, text="EQUIPMENT:", font=("Arial Rounded MT Bold", 20), text_color="white")
         equipment_entry = equipment(frame1)
 
-
+        
         def save_and_next(win, open_work):
             Shared.clicked1 = Shared.clicked1.get()
             Shared.clicked2 = Shared.clicked2.get()  
             Shared.clicked3 = Shared.clicked3.get()   
-            success = insert_workout(SharedData.username,duration,intensity)
-
-            if not success:
-                print("Workout NOT saved")
-            else:
-                print("Workout saved")
 
             win.destroy()
             open_work()
@@ -112,8 +106,10 @@ def open_selection(username):
             frame1, text="BACK TO OPTIONS",
             fg_color="#4a90e2", hover_color="#357ABD",
             font=("Arial Rounded MT Bold", 28), text_color="white",
-            command=lambda: [win.destroy(), open_option(username)]
+            command=lambda: [win.destroy(), open_option()]
         )
+
+
 
         workout_label.place(x=10, y=5)
 
@@ -128,6 +124,8 @@ def open_selection(username):
 
         next_button_widget.place(x=360, y=350)
         back_button.place(x=20, y=350)
+
+
 
         def draw_gradient(canvas, color1, color2):
             width = canvas.winfo_width()
@@ -155,5 +153,4 @@ def open_selection(username):
         canvas.bind("<Configure>", update_gradient)
 
         win.mainloop()
-
-    createMenu(ctk.CTk())
+    createMenu(ctk.CTk()) 

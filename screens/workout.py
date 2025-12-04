@@ -16,7 +16,7 @@ def open_work():
 
     win = ctk.CTk()
     win.title("WORKOUT")
-    win.geometry("1800x1200")
+    win.geometry("1200x800")
     canvas = Canvas(win, width=500, height=300, highlightthickness=0)
     canvas.pack(fill="both", expand=True)
 
