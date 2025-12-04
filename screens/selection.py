@@ -11,10 +11,10 @@ class Shared:
     clicked3 = None
 
 def open_selection():
-    from workout import open_work
+    from screens.workout import open_work
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("dark-blue")
-
+    from screens.option import open_option
 
     def duration(frame1):
         Shared.clicked1 = ctk.StringVar(value="30")
@@ -98,7 +98,7 @@ def open_selection():
             frame1, text="BACK TO OPTIONS",
             fg_color="#4a90e2", hover_color="#357ABD",
             font=("Arial Rounded MT Bold", 28), text_color="white",
-            command=lambda: [win.destroy(), open_option()]
+            command=lambda: [win.destroy(),open_option() ]
         )
 
 
